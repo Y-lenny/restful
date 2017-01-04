@@ -3,7 +3,7 @@ package com.rest.restapi.bo;
 import java.io.Serializable;
 
 /**
- * <br>业务对象</br>
+ * <br>用户业务对象</br>
  *
  * @Class UserBo
  * @Author lennylv

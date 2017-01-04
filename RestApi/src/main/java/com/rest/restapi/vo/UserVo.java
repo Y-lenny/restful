@@ -3,7 +3,7 @@ package com.rest.restapi.vo;
 import java.io.Serializable;
 
 /**
- * <br>web对象</br>
+ * <br>用户web对象</br>
  *
  * @Class UserBo
  * @Author lennylv
@@ -20,6 +20,16 @@ public class UserVo implements Serializable {
     private String email;
 
     private String phoneNumber;
+
+    public UserVo() {
+    }
+
+    public UserVo(int userId, String username, String email, String phoneNumber) {
+        this.userId = userId;
+        this.username = username;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
 
     public int getUserId() {
         return userId;
@@ -51,5 +61,15 @@ public class UserVo implements Serializable {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "UserVo{" +
+                "userId=" + userId +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
     }
 }

@@ -35,7 +35,7 @@ public void after() throws Exception {
 @Test
 public void testQueryUserById() throws Exception {
 
-    System.out.println( userController.queryUserById());;
+//    System.out.println( userController.queryUserById());;
 
 }
 
