@@ -1,9 +1,9 @@
-package com.rest.restapi.bo;
+package com.rest.restapi.po;
 
 import java.io.Serializable;
 
 /**
- * <br>业务对象</br>
+ * <br>持久化对象</br>
  *
  * @Class UserBo
  * @Author lennylv
@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @Version 1.0
  * @Since 1.0
  */
-public class UserBo implements Serializable {
+public class UserPo implements Serializable {
 
     private int userId;
 
