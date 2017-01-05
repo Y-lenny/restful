@@ -1,5 +1,6 @@
 package com.rest.restapi.controller;
 
+import com.rest.restapi.utils.QueryConstants;
 import com.rest.restapi.vo.OrderVo;
 import com.rest.restapi.vo.UserVo;
 import org.springframework.http.HttpStatus;
@@ -69,7 +70,7 @@ public class UserController {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    public Object queryUserByFilter(@PathVariable(value = "username") String username) {
+    public Object queryUserByFilter(@RequestParam(value = "username") String username) {
         if ("zhangsan".equalsIgnoreCase(username)) {
             return new UserVo(0, "zhangsan", "zhangsan@tcl.com", "1234567890");
         } else {
@@ -81,62 +82,51 @@ public class UserController {
      * 通过username过滤用户
      * TODO ?sort=-id,+username
      *
-     * @param username
      * @return
      */
 
-    @RequestMapping(method = RequestMethod.GET)
-    public Object queryUserSort(@PathVariable(value = "username") String username) {
-        if ("zhangsan".equalsIgnoreCase(username)) {
-            return new UserVo(0, "zhangsan", "zhangsan@tcl.com", "1234567890");
-        } else {
-            return null;
-        }
+    @RequestMapping(params = {QueryConstants.SORT}, method = RequestMethod.GET)
+    public Object queryUserSort(@RequestParam(QueryConstants.SORT) String sorts) {
+        return null;
     }
 
     /**
      * 通过username过滤用户
      * TODO ?q=zhangsan
      *
-     * @param username
+     * @param queries
      * @return
      */
 
-    @RequestMapping(method = RequestMethod.GET)
-    public Object queryUserSearch(@PathVariable(value = "username") String username) {
-        if ("zhangsan".equalsIgnoreCase(username)) {
-            return new UserVo(0, "zhangsan", "zhangsan@tcl.com", "1234567890");
-        } else {
-            return null;
-        }
+    @RequestMapping(params = {QueryConstants.Q_PARAM}, method = RequestMethod.GET)
+    public Object queryUserSearch(@RequestParam(QueryConstants.Q_PARAM) final String queries) {
+        return null;
     }
 
     /**
      * 通过username过滤用户
      * TODO ?fields=userId,username
      *
-     * @param username
+     * @param fields
      * @return
      */
 
-    @RequestMapping(method = RequestMethod.GET)
-    public Object queryUserFields(@PathVariable(value = "username") String username) {
-        if ("zhangsan".equalsIgnoreCase(username)) {
-            return new UserVo(0, "zhangsan", "zhangsan@tcl.com", "1234567890");
-        } else {
-            return null;
-        }
+    @RequestMapping(params = {QueryConstants.FIELD}, method = RequestMethod.GET)
+    public Object queryUserFields(@RequestParam(QueryConstants.FIELD) String fields) {
+        return null;
     }
 
     /**
      * 通过username过滤用户
-     * TODO ?page=3&per_page=100
+     * TODO ?page=3&size=100
      *
+     * @param page
+     * @param size
      * @return
      */
 
-    @RequestMapping(method = RequestMethod.GET)
-    public Object queryUserPaging() {
+    @RequestMapping(params = {QueryConstants.PAGE, QueryConstants.SIZE}, method = RequestMethod.GET)
+    public Object queryUserPaging(@RequestParam(QueryConstants.PAGE) final int page, @RequestParam(QueryConstants.SIZE) final int size) {
         return null;
     }
 
