@@ -1,12 +1,13 @@
 package com.rest.restapi.controller;
 
-import com.rest.restapi.utils.QueryConstants;
+import com.rest.restapi.utils.query.*;
 import com.rest.restapi.vo.OrderVo;
 import com.rest.restapi.vo.UserVo;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by lennylv on 2017-1-3.
@@ -64,7 +65,7 @@ public class UserController {
 
     /**
      * 通过username过滤用户
-     * ?username=zhangsan
+     * ?username=zhangsan 直接映射RequestParam 对应参数;然后进行参数校验
      *
      * @param username
      * @return
@@ -80,45 +81,37 @@ public class UserController {
 
     /**
      * 通过username过滤用户
-     * TODO ?sort=-id,+username
+     * ?sort=-id,+username
      *
      * @return
      */
 
     @RequestMapping(params = {QueryConstants.SORT}, method = RequestMethod.GET)
     public Object queryUserSort(@RequestParam(QueryConstants.SORT) String sorts) {
+
+        // 转换成排序列表
+        List<Sort> sortList = QueryOrderUtil.parseSort(sorts);
         return null;
     }
 
     /**
      * 通过username过滤用户
-     * TODO ?q=zhangsan
+     * ?q=zhangsan
      *
-     * @param queries
+     * @param searches
      * @return
      */
 
     @RequestMapping(params = {QueryConstants.Q_PARAM}, method = RequestMethod.GET)
-    public Object queryUserSearch(@RequestParam(QueryConstants.Q_PARAM) final String queries) {
+    public Object queryUserSearch(@RequestParam(QueryConstants.Q_PARAM) final String searches) {
+
+        List<Search> searchList = QuerySearchUtil.parseSearch(searches);
         return null;
     }
 
     /**
      * 通过username过滤用户
-     * TODO ?fields=userId,username
-     *
-     * @param fields
-     * @return
-     */
-
-    @RequestMapping(params = {QueryConstants.FIELD}, method = RequestMethod.GET)
-    public Object queryUserFields(@RequestParam(QueryConstants.FIELD) String fields) {
-        return null;
-    }
-
-    /**
-     * 通过username过滤用户
-     * TODO ?page=3&size=100
+     * ?page=3&size=100
      *
      * @param page
      * @param size
@@ -127,19 +120,6 @@ public class UserController {
 
     @RequestMapping(params = {QueryConstants.PAGE, QueryConstants.SIZE}, method = RequestMethod.GET)
     public Object queryUserPaging(@RequestParam(QueryConstants.PAGE) final int page, @RequestParam(QueryConstants.SIZE) final int size) {
-        return null;
-    }
-
-    /**
-     * 通过username过滤用户
-     * TODO gzip压缩
-     *
-     * @param
-     * @return
-     */
-
-    @RequestMapping(method = RequestMethod.GET)
-    public Object queryUserGzip() {
         return null;
     }
 
