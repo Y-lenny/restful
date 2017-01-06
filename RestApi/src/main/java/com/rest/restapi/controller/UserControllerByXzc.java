@@ -1,5 +1,8 @@
 package com.rest.restapi.controller;
 
+import com.rest.restapi.aspect.AbstractController;
+import com.rest.restapi.utils.ReponseMsg;
+import com.rest.restapi.utils.TokenUtils;
 import com.rest.restapi.utils.query.QueryConstants;
 import com.rest.restapi.utils.query.QueryOrderUtil;
 import com.rest.restapi.utils.query.QuerySearchUtil;
@@ -17,7 +20,7 @@ import java.util.ArrayList;
  */
 @RestController
 @RequestMapping(path = "/v1/users")
-public class UserController {
+public class UserControllerByXzc extends AbstractController {
 
     /**
      * 创建用户
@@ -27,8 +30,18 @@ public class UserController {
      */
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void insertUser(@RequestBody(required = true) UserVo userVo) {
-        System.out.println(userVo);
+    public Object insertUser(@RequestBody(required = true) UserVo userVo) {
+
+        //取到token值
+        String token = getCommonParameter().getToken();
+
+        //token校验
+        if (!TokenUtils.checkToken(token)) {
+            return this.serviceFail(ReponseMsg.REQUEST_IS_ERROR);
+        }
+
+        //具体业务操作，实际需要调用server
+        return this.getSuccessBytesByAes(true);
     }
 
     /**
@@ -38,8 +51,17 @@ public class UserController {
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteUser(@PathVariable(value = "id") int id) {
-        System.out.println(id);
+    public Object deleteUser(@PathVariable(value = "id") int id) {
+        //取到token值
+        String token = getCommonParameter().getToken();
+
+        //token校验
+        if (!TokenUtils.checkToken(token)) {
+            return this.serviceFail(ReponseMsg.REQUEST_IS_ERROR);
+        }
+
+        //具体业务操作，实际需要调用server
+        return this.getSuccessBytesByAes(true);
     }
 
     /**
@@ -49,8 +71,17 @@ public class UserController {
      */
     @RequestMapping(method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.CREATED)
-    public void updateUser(@RequestBody(required = true) UserVo userVo) {
-        System.out.println(userVo);
+    public Object updateUser(@RequestBody(required = true) UserVo userVo) {
+        //取到token值
+        String token = getCommonParameter().getToken();
+
+        //token校验
+        if (!TokenUtils.checkToken(token)) {
+            return this.serviceFail(ReponseMsg.REQUEST_IS_ERROR);
+        }
+
+        //具体业务操作，实际需要调用server
+        return this.getSuccessBytesByAes(true);
     }
 
     /**
@@ -61,7 +92,17 @@ public class UserController {
      */
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
     public Object queryUserById(@PathVariable(value = "id") int id) {
-        return new UserVo(id, "zhangsan", "zhangsan@tcl.com", "1234567890");
+
+        //取到token值
+        String token = getCommonParameter().getToken();
+
+        //token校验
+        if (!TokenUtils.checkToken(token)) {
+            return this.serviceFail(ReponseMsg.REQUEST_IS_ERROR);
+        }
+
+        //具体业务操作，实际需要调用server
+        return this.getSuccessBytesByAes(new UserVo(id, "zhangsan", "zhangsan@tcl.com", "1234567890"));
     }
 
     /**
@@ -73,10 +114,19 @@ public class UserController {
      */
     @RequestMapping(method = RequestMethod.GET)
     public Object queryUserByFilter(@RequestParam(value = "username") String username) {
+
+        //取到token值
+        String token = getCommonParameter().getToken();
+
+        //token校验
+        if (!TokenUtils.checkToken(token)) {
+            return this.serviceFail(ReponseMsg.REQUEST_IS_ERROR);
+        }
+
         if ("zhangsan".equalsIgnoreCase(username)) {
-            return new UserVo(0, "zhangsan", "zhangsan@tcl.com", "1234567890");
+            return this.getSuccessBytesByAes(new UserVo(0, "zhangsan", "zhangsan@tcl.com", "1234567890"));
         } else {
-            return null;
+            return this.getSuccessBytesByAes(null);
         }
     }
 
