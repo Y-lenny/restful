@@ -20,7 +20,7 @@ import java.util.ArrayList;
  * v1版本API
  */
 @RestController
-@RequestMapping(path = "/v1/users")
+@RequestMapping(path = "/api/v1/users")
 public class UserController {
 
     /**
@@ -70,7 +70,7 @@ public class UserController {
 
     /**
      * 通过username过滤用户
-     * ?username=zhangsan 直接映射RequestParam 对应参数;然后进行参数校验
+     *api.dev.clean.com/v1/users?username=zhangsan/ 直接映射RequestParam 对应参数;然后进行参数校验
      *
      * @param username
      * @return
