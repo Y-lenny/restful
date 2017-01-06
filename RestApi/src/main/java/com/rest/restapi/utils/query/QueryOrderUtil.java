@@ -9,7 +9,11 @@ import java.util.List;
 
 /**
  * <br>针对于order处理的工具类</br>
- *
+ * <p>
+ * - 表示倒序，默认是升序
+ * 使用关键字 sort
+ * 例如：按照用户名升序、email倒序 ：order=username,-email
+ * <p>
  * @Class QueryOrderUtil
  * @Author lennylv
  * @Date 2017-1-5 11:32
@@ -29,7 +33,7 @@ public final class QueryOrderUtil {
 
 
     /**
-     * <br>校验参数</br>
+     * <br>TODO 校验参数：校验排序参数是否有问题，应该维护哪些参数进行排序以及排序规则</br>
      *
      * @Method
      * @Param

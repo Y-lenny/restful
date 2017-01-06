@@ -8,7 +8,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Created by lennylv on 2017-1-4.
- * TODO Http缓存、Cache、Rate-Limit、Hateoas、安全性（Header、Body）、Error、一致性(Accept/Content-Type、Action、ETag、Status)
+ * TODO
+ 1. api的URI设计实现
+     * 域名：api.company.com
+     * 版本：/v1/users/1
+     * 查询：分页、过滤、搜索、排序、关联查询
+     * 状态码：Error/Status
+
+ 2. api的缓存实现
+ 3. Rate-Limit限流限速
+ 4. api的HATEOAS
+ 5. api的安全实现
+
+     * https：保证数据传输加密
+     * HMAC：保证数据的一致性，防止DDOS攻击
+     * Header、Body
+
+ 6. 一致性(Accept/Content-Type、Action、ETag、Status)
+ 7. api的管理swagger
+ 8. 幂等操作
+
+
  * https://zhuanlan.zhihu.com/p/20034107?columnSlug=prattle
  */
 @RequestMapping(path = "/orders")

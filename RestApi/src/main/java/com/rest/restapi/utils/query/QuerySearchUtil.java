@@ -1,17 +1,33 @@
 package com.rest.restapi.utils.query;
 
+import com.google.common.collect.Lists;
 import com.rest.restapi.utils.RegexUtil;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
+/**
+ * <br>针对于search工具类</br>
+ * <p>
+ * <p>
+ * 使用关键字：q
+ * 详细的规则在此方法：QuerySearchUtil.determineOperation
+ * <p/>
+ *
+ * @Class QuerySearchUtil
+ * @Author lennylv
+ * @Date 2017-1-6 10:37
+ * @Version 1.0
+ * @Since 1.0
+ */
 public final class QuerySearchUtil {
 
 
     /**
-     * - id=1,xxid=1,xxname=0-9*
+     * - id=1,name=xx*
      */
     private static final String SEARCH_PATTERN = "(([a-zA-Z]+~?=[0-9a-zA-Z\\-_/*]+)?,?)*";
 
@@ -20,7 +36,7 @@ public final class QuerySearchUtil {
     }
 
     /**
-     * <br>验证参数</br>
+     * <br>验证参数：校验搜索参数是否有问题，应该维护哪些参数进行搜索以及搜索范围</br>
      *
      * @Method
      * @Param
@@ -31,7 +47,14 @@ public final class QuerySearchUtil {
      * @Version 1.0
      * @Since 1.0
      */
-    public static boolean validateSearch(String paramKeys) {
+    public static boolean validateSearch(Set paramKeys) {
+        if (paramKeys.retainAll(
+                Lists.newArrayList(
+                        SearchField.id.toString(), SearchField.id.toString() + QueryConstants.NEGATION,
+                        SearchField.username.toString(), SearchField.username.toString() + QueryConstants.NEGATION,
+                        SearchField.email.toString(), SearchField.email.toString() + QueryConstants.NEGATION))) {
+            return false;
+        }
         return true;
     }
 
@@ -82,6 +105,13 @@ public final class QuerySearchUtil {
         return new Search(theKey, op, theValue);
     }
 
+    /**
+     * 映射搜索规则
+     *
+     * @param negated
+     * @param value
+     * @return
+     */
     private static SearchMiddle determineOperation(final boolean negated, final String value) {
         SearchMiddle op = null;
         if (value.startsWith(QueryConstants.ANY_CLIENT)) {

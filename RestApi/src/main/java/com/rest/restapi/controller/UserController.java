@@ -13,6 +13,10 @@ import java.util.ArrayList;
 /**
  * Created by lennylv on 2017-1-3.
  * <p>
+ *     api.dev.hawk.com/v1/users
+ *     api.test.hawk.com/v1/users
+ *     api.pro.hawk.com/v1/users
+ * <p>
  * v1版本API
  */
 @RestController
