@@ -19,9 +19,9 @@ import java.util.List;
 public final class QueryOrderUtil {
 
     /**
-     * - order=+username,-email
+     * - order=username,-email
      */
-    private static final String ORDER_PATTERN = "([+|-]{1}[a-zA-Z]+,)*([+|-]{1}[a-zA-Z]+)";
+    private static final String ORDER_PATTERN = "((-?[a-zA-Z]+),?)*";
 
     private QueryOrderUtil() {
         throw new UnsupportedOperationException();
@@ -58,7 +58,7 @@ public final class QueryOrderUtil {
      */
     public static List<Sort> parseSort(String sorts) {
 
-        if (!StringUtils.isEmpty(sorts) || !RegexUtil.isMatch(sorts, ORDER_PATTERN )) {
+        if (StringUtils.isEmpty(sorts) || !RegexUtil.isMatch(sorts, ORDER_PATTERN)) {
             return null;
         }
 

@@ -13,7 +13,7 @@ public final class QuerySearchUtil {
     /**
      * - id=1,xxid=1,xxname=0-9*
      */
-    private static final String SEARCH_PATTERN = "((id~?=[0-9]+)?,?) * ((name~?=[0-9a-zA-Z\\-_/*]+),?)*";
+    private static final String SEARCH_PATTERN = "(([a-zA-Z]+~?=[0-9a-zA-Z\\-_/*]+)?,?)*";
 
     private QuerySearchUtil() {
         throw new UnsupportedOperationException();
@@ -49,7 +49,7 @@ public final class QuerySearchUtil {
      */
     public static List<Search> parseSearch(final String searches) {
 
-        if (!StringUtils.isEmpty(searches) || !RegexUtil.isMatch(searches, SEARCH_PATTERN)) {
+        if (StringUtils.isEmpty(searches) || !RegexUtil.isMatch(searches, SEARCH_PATTERN)) {
             return null;
         }
         String[] searchArr = searches.split(QueryConstants.SEPARATOR);

@@ -1,13 +1,14 @@
 package com.rest.restapi.controller;
 
-import com.rest.restapi.utils.query.*;
+import com.rest.restapi.utils.query.QueryConstants;
+import com.rest.restapi.utils.query.QueryOrderUtil;
+import com.rest.restapi.utils.query.QuerySearchUtil;
 import com.rest.restapi.vo.OrderVo;
 import com.rest.restapi.vo.UserVo;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by lennylv on 2017-1-3.
@@ -81,7 +82,7 @@ public class UserController {
 
     /**
      * 通过username过滤用户
-     * ?sort=-id,+username
+     * ?sort=-id,username
      *
      * @return
      */
@@ -90,8 +91,7 @@ public class UserController {
     public Object queryUserSort(@RequestParam(QueryConstants.SORT) String sorts) {
 
         // 转换成排序列表
-        List<Sort> sortList = QueryOrderUtil.parseSort(sorts);
-        return null;
+        return QueryOrderUtil.parseSort(sorts);
     }
 
     /**
@@ -105,8 +105,8 @@ public class UserController {
     @RequestMapping(params = {QueryConstants.Q_PARAM}, method = RequestMethod.GET)
     public Object queryUserSearch(@RequestParam(QueryConstants.Q_PARAM) final String searches) {
 
-        List<Search> searchList = QuerySearchUtil.parseSearch(searches);
-        return null;
+        // 转换成搜索列表
+        return QuerySearchUtil.parseSearch(searches);
     }
 
     /**
