@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * TODO Http缓存、Cache、Rate-Limit、Hateoas、安全性（Header、Body）、Error、一致性(Accept/Content-Type、Action、ETag、Status)
  * https://zhuanlan.zhihu.com/p/20034107?columnSlug=prattle
  */
-@RequestMapping(path = "/orders")
+@RequestMapping(path = "/ordersxzc")
 public class OrderControllerByXzc extends AbstractController {
 
     /**
@@ -78,13 +78,14 @@ public class OrderControllerByXzc extends AbstractController {
      */
 
     @RequestMapping(method = RequestMethod.GET)
-    public Object queryOrderGzip() {
+    public byte[] queryOrderGzip() {
+
         //取到token值
-        String token = getCommonParameter().getToken();
+        String token = "142556325669:OGUiRDpWHv6B7cW&";
 
         //token校验
         if (!TokenUtils.checkToken(token)) {
-            return this.serviceFail(ReponseMsg.REQUEST_IS_ERROR);
+            return this.getServiceFailBytesByAes(ReponseMsg.REQUEST_IS_ERROR);
         }
 
         //具体业务操作，实际需要调用server

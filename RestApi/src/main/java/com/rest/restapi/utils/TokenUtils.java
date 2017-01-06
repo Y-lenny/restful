@@ -11,27 +11,29 @@ public class TokenUtils {
 
     /**
      * token校验
+     * true 表示检验通过，flase表示检验失败
      *
      * @param token ,   请求时间戳:公钥
      * @return
      */
     public static boolean checkToken(String token) {
-        boolean flag = false;
         if (null == token) {
-            return flag;
+            return false;
         }
         String[] arr = StringUtils.splitStr(token);
         if (null == arr || arr.length < 2) {
-            return flag;
+            return false;
         }
 
         //取到公钥，判断公钥是否我们下发客户端的公钥
         String accessKey = arr[1];
 
-        if (null != accessKey && Constants.SPACE_ACCESS_KEY == accessKey) {
-            flag = true;
+        System.out.println("*****  accessKey: " + accessKey);
+
+        if (null != accessKey && Constants.SPACE_ACCESS_KEY.equals(accessKey)) {
+            return true;
         }
-        return flag;
+        return false;
     }
 
 }
