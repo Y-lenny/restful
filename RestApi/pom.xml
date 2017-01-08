@@ -58,6 +58,12 @@
             <version>1.8.3</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-project</artifactId>
+            <version>1.5.12</version>
+        </dependency>
+
     </dependencies>
 
     <build>

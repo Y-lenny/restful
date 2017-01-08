@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(securedEnabled = true)
+@EnableGlobalMethodSecurity(securedEnabled = false)
 @ComponentScan("org.baeldung.um.security")
 public class UmJavaSecurityConfig extends WebSecurityConfigurerAdapter {
 

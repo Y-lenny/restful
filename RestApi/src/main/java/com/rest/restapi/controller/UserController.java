@@ -20,7 +20,7 @@ import java.util.ArrayList;
  * v1版本API
  */
 @RestController
-@RequestMapping(path = "/api/v1/users")
+@RequestMapping(path = "/v1/users")
 public class UserController {
 
     /**
