@@ -1,18 +1,14 @@
 package com.rest.restapi.aspect;
 
 import com.rest.restapi.bean.CommonParameter;
-import com.rest.restapi.exception.CleanException;
 import com.rest.restapi.utils.*;
 import com.rest.restapi.vo.CommonParameterVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author xiaowan.dang
@@ -58,23 +54,6 @@ public class AbstractController {
         CommonParameter commonParameter = new CommonParameter();
         BeanUtils.copyProperties(commonParameterVo, commonParameter);
         return commonParameter;
-    }
-
-    @ResponseBody
-    @ExceptionHandler(value = Exception.class)
-    public JsonResult handleException(Exception e, HttpServletRequest request,
-                                      HttpServletResponse response) {
-        String code = ReponseMsg.SERVICE_FAILE.getCode();
-        String msg = ReponseMsg.SERVICE_FAILE.getMsg();
-        if (e instanceof IllegalArgumentException) {
-            msg = ((IllegalArgumentException) e).getMessage();
-        } else if (e instanceof CleanException) {
-            CleanException e1 = (CleanException) e;
-            code = e1.getCode();
-            msg = e1.getMsg();
-        }
-        e.printStackTrace();
-        return new JsonResult(code, msg, null);
     }
 
     // 组装 自定义错误
