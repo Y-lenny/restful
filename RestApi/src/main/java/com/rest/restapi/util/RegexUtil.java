@@ -1,4 +1,4 @@
-package com.rest.restapi.utils;
+package com.rest.restapi.util;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

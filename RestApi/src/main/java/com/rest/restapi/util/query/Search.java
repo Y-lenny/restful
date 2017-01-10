@@ -1,4 +1,4 @@
-package com.rest.restapi.utils.query;
+package com.rest.restapi.util.query;
 
 /**
  * Created by lennylv on 2017-1-5.

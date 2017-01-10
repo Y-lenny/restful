@@ -1,4 +1,4 @@
-package com.rest.restapi.utils;
+package com.rest.restapi.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

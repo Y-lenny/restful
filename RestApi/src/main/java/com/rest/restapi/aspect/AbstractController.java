@@ -1,7 +1,7 @@
 package com.rest.restapi.aspect;
 
 import com.rest.restapi.bean.CommonParameter;
-import com.rest.restapi.utils.*;
+import com.rest.restapi.util.*;
 import com.rest.restapi.vo.CommonParameterVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

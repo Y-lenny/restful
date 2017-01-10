@@ -1,9 +1,9 @@
 package com.rest.restapi.controller;
 
 import com.rest.RestApiApplicationTests;
-import com.rest.restapi.utils.AesUtils;
-import com.rest.restapi.utils.Constants;
-import com.rest.restapi.utils.GZipUtils;
+import com.rest.restapi.util.AesUtils;
+import com.rest.restapi.util.Constants;
+import com.rest.restapi.util.GZipUtils;
 import org.junit.Test;
 
 /**

@@ -1,4 +1,4 @@
-package com.rest.restapi.utils;
+package com.rest.restapi.util;
 
 
 import org.apache.commons.codec.binary.Base64;

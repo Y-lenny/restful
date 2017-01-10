@@ -1,6 +1,6 @@
-package com.rest.restapi.utils.query;
+package com.rest.restapi.util.query;
 
-import com.rest.restapi.utils.RegexUtil;
+import com.rest.restapi.util.RegexUtil;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 

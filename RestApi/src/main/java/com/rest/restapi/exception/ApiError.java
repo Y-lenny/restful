@@ -1,5 +1,14 @@
 package com.rest.restapi.exception;
 
+/**
+ * <br> 封装api调用错误信息，返回给客户端 </br>
+ *
+ * @Class ApiError
+ * @Author lennylv
+ * @Date 2017-1-9 20:47
+ * @Version 1.0
+ * @Since 1.0
+ */
 public class ApiError {
 
     private int status;
@@ -13,8 +22,6 @@ public class ApiError {
         this.message = message;
         this.developerMessage = developerMessage;
     }
-
-    //
 
     public int getStatus() {
         return status;
@@ -39,8 +46,6 @@ public class ApiError {
     public void setDeveloperMessage(final String developerMessage) {
         this.developerMessage = developerMessage;
     }
-
-    //
 
     @Override
     public final int hashCode() {

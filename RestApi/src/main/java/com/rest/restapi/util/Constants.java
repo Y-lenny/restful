@@ -1,4 +1,4 @@
-package com.rest.restapi.utils;
+package com.rest.restapi.util;
 
 /**
  * @author xiaowan.dang

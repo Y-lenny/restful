@@ -1,4 +1,4 @@
-package com.rest.restapi.utils.query;
+package com.rest.restapi.util.query;
 
 public enum SearchField {
     id, // common

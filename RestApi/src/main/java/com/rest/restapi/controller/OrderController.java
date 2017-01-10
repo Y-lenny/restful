@@ -1,6 +1,6 @@
 package com.rest.restapi.controller;
 
-import com.rest.restapi.utils.query.QueryConstants;
+import com.rest.restapi.util.query.QueryConstants;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

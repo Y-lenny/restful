@@ -1,4 +1,4 @@
-package com.rest.restapi.utils;
+package com.rest.restapi.util;
 
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
