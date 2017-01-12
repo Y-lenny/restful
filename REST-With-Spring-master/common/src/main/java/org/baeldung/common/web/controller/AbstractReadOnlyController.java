@@ -15,7 +15,7 @@ import org.baeldung.common.web.WebConstants;
 import org.baeldung.common.web.events.MultipleResourcesRetrievedEvent;
 import org.baeldung.common.web.events.PaginatedResultsRetrievedEvent;
 import org.baeldung.common.web.events.SingleResourceRetrievedEvent;
-import org.baeldung.common.web.exception.MyResourceNotFoundException;
+import org.baeldung.common.web.exception.ResourceNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,7 +73,7 @@ public abstract class AbstractReadOnlyController<D extends IDto, E extends IEnti
 
     protected final List<E> findAllInternal(final HttpServletRequest request, final UriComponentsBuilder uriBuilder, final HttpServletResponse response) {
         if (request.getParameterNames().hasMoreElements()) {
-            throw new MyResourceNotFoundException();
+            throw new ResourceNotFoundException();
         }
 
         eventPublisher.publishEvent(new MultipleResourcesRetrievedEvent<D>(clazz, uriBuilder, response));
@@ -90,7 +90,7 @@ public abstract class AbstractReadOnlyController<D extends IDto, E extends IEnti
     protected final List<E> findPaginatedAndSortedInternal(final int page, final int size, final String sortBy, final String sortOrder, final UriComponentsBuilder uriBuilder, final HttpServletResponse response) {
         final Page<E> resultPage = getService().findAllPaginatedAndSortedRaw(page, size, sortBy, sortOrder);
         if (page > resultPage.getTotalPages()) {
-            throw new MyResourceNotFoundException();
+            throw new ResourceNotFoundException();
         }
         eventPublisher.publishEvent(new PaginatedResultsRetrievedEvent<D>(clazz, uriBuilder, response, page, resultPage.getTotalPages(), size));
 
@@ -100,7 +100,7 @@ public abstract class AbstractReadOnlyController<D extends IDto, E extends IEnti
     protected final List<E> findPaginatedInternal(final int page, final int size, final String sortBy, final String sortOrder, final UriComponentsBuilder uriBuilder, final HttpServletResponse response) {
         final Page<E> resultPage = getService().findAllPaginatedAndSortedRaw(page, size, sortBy, sortOrder);
         if (page > resultPage.getTotalPages()) {
-            throw new MyResourceNotFoundException();
+            throw new ResourceNotFoundException();
         }
         eventPublisher.publishEvent(new PaginatedResultsRetrievedEvent<D>(clazz, uriBuilder, response, page, resultPage.getTotalPages(), size));
 

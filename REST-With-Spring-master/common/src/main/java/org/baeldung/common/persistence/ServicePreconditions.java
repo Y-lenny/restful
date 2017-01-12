@@ -1,7 +1,7 @@
 package org.baeldung.common.persistence;
 
 import org.baeldung.common.persistence.exception.MyEntityNotFoundException;
-import org.baeldung.common.web.exception.MyBadRequestException;
+import org.baeldung.common.web.exception.BadRequestException;
 
 public final class ServicePreconditions {
 
@@ -35,7 +35,7 @@ public final class ServicePreconditions {
 
     public static void checkOKArgument(final boolean okArgument) {
         if (!okArgument) {
-            throw new MyBadRequestException();
+            throw new BadRequestException();
         }
     }
 

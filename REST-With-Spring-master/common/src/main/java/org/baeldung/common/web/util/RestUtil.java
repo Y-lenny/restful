@@ -1,6 +1,6 @@
 package org.baeldung.common.web.util;
 
-import org.baeldung.common.web.exception.MyConflictException;
+import org.baeldung.common.web.exception.ConflictException;
 import org.baeldung.common.web.exception.ValidationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.HttpStatusCodeException;
@@ -23,7 +23,7 @@ public final class RestUtil {
      */
     public static void propagateStatusCodeOnCreate(final ResponseEntity<?> createResponse, final String message) {
         if (createResponse.getStatusCode().value() == 409) {
-            throw new MyConflictException(message);
+            throw new ConflictException(message);
         }
         if (createResponse.getStatusCode().value() != 201) {
             throw new IllegalStateException(message);

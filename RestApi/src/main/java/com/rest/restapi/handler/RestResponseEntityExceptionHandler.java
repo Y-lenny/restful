@@ -87,7 +87,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     }
 
     // 404 资源未找到
-    @ExceptionHandler(value = {MyEntityNotFoundException.class, MyEntityNotFoundException.class, MyResourceNotFoundException.class})
+    @ExceptionHandler(value = {EntityNotFoundException.class, EntityNotFoundException.class, ResourceNotFoundException.class})
     protected ResponseEntity<Object> handleNotFound(final RuntimeException ex, final WebRequest request) {
         log.warn("Warn: Not Found {}", ex.getMessage());
 
@@ -96,7 +96,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     }
 
     // 409 资源冲突
-    @ExceptionHandler({InvalidDataAccessApiUsageException.class, DataAccessException.class, MyConflictException.class})
+    @ExceptionHandler({InvalidDataAccessApiUsageException.class, DataAccessException.class, ConflictException.class})
     protected ResponseEntity<Object> handleConflict(final RuntimeException ex, final WebRequest request) {
         log.warn("Warn: Conflict {}", ex.getMessage());
 
@@ -123,13 +123,13 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     }
 
     private ValidationError processFieldErrors(final List<FieldError> fieldErrors) {
-        final ValidationError dto = new ValidationError();
+        final ValidationError error = new ValidationError();
 
         for (final FieldError fieldError : fieldErrors) {
             final String localizedErrorMessage = fieldError.getDefaultMessage();
-            dto.addFieldError(fieldError.getField(), localizedErrorMessage);
+            error.addFieldError(fieldError.getField(), localizedErrorMessage);
         }
-        return dto;
+        return error;
     }
 
     private ApiError message(final HttpStatus httpStatus, final Exception ex) {

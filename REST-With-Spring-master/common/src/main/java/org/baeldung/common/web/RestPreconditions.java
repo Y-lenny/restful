@@ -1,9 +1,9 @@
 package org.baeldung.common.web;
 
-import org.baeldung.common.web.exception.MyBadRequestException;
-import org.baeldung.common.web.exception.MyConflictException;
-import org.baeldung.common.web.exception.MyForbiddenException;
-import org.baeldung.common.web.exception.MyResourceNotFoundException;
+import org.baeldung.common.web.exception.BadRequestException;
+import org.baeldung.common.web.exception.ConflictException;
+import org.baeldung.common.web.exception.ForbiddenException;
+import org.baeldung.common.web.exception.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 
 /**
@@ -27,7 +27,7 @@ public final class RestPreconditions {
      *
      * @return the non-null reference that was validated
      *
-     * @throws MyResourceNotFoundException
+     * @throws ResourceNotFoundException
      *             if {@code reference} is null
      */
     public static <T> T checkNotNull(final T reference) {
@@ -44,12 +44,12 @@ public final class RestPreconditions {
      *
      * @return the non-null reference that was validated
      *
-     * @throws MyResourceNotFoundException
+     * @throws ResourceNotFoundException
      *             if {@code reference} is null
      */
     public static <T> T checkNotNull(final T reference, final String message) {
         if (reference == null) {
-            throw new MyResourceNotFoundException(message);
+            throw new ResourceNotFoundException(message);
         }
         return reference;
     }
@@ -62,7 +62,7 @@ public final class RestPreconditions {
      *            an object reference
      * @return the non-null reference that was validated
      *
-     * @throws MyBadRequestException
+     * @throws BadRequestException
      *             if {@code reference} is null
      */
     public static <T> T checkRequestElementNotNull(final T reference) {
@@ -79,12 +79,12 @@ public final class RestPreconditions {
      *
      * @return the non-null reference that was validated
      *
-     * @throws MyBadRequestException
+     * @throws BadRequestException
      *             if {@code reference} is null
      */
     public static <T> T checkRequestElementNotNull(final T reference, final String message) {
         if (reference == null) {
-            throw new MyBadRequestException(message);
+            throw new BadRequestException(message);
         }
         return reference;
     }
@@ -95,7 +95,7 @@ public final class RestPreconditions {
      * @param expression
      *            a boolean expression
      *
-     * @throws MyConflictException
+     * @throws ConflictException
      *             if {@code expression} is false
      */
     public static void checkRequestState(final boolean expression) {
@@ -110,12 +110,12 @@ public final class RestPreconditions {
      * @param message
      *            the message of the exception if the check fails
      *
-     * @throws MyConflictException
+     * @throws ConflictException
      *             if {@code expression} is false
      */
     public static void checkRequestState(final boolean expression, final String message) {
         if (!expression) {
-            throw new MyConflictException(message);
+            throw new ConflictException(message);
         }
     }
 
@@ -125,7 +125,7 @@ public final class RestPreconditions {
      * @param expression
      *            a boolean expression
      *
-     * @throws MyBadRequestException
+     * @throws BadRequestException
      *             if {@code expression} is false
      */
     public static void checkIfBadRequest(final boolean expression) {
@@ -140,12 +140,12 @@ public final class RestPreconditions {
      * @param message
      *            the message of the exception if the check fails
      *
-     * @throws MyBadRequestException
+     * @throws BadRequestException
      *             if {@code expression} is false
      */
     public static void checkIfBadRequest(final boolean expression, final String message) {
         if (!expression) {
-            throw new MyBadRequestException(message);
+            throw new BadRequestException(message);
         }
     }
 
@@ -155,7 +155,7 @@ public final class RestPreconditions {
      * @param expression
      *            has value true if found, otherwise false
      *
-     * @throws MyResourceNotFoundException
+     * @throws ResourceNotFoundException
      *             if expression is false, means value not found.
      */
     public static void checkFound(final boolean expression) {
@@ -170,12 +170,12 @@ public final class RestPreconditions {
      * @param message
      *            the message of the exception if the check fails
      *
-     * @throws MyResourceNotFoundException
+     * @throws ResourceNotFoundException
      *             if expression is false, means value not found.
      */
     public static void checkFound(final boolean expression, final String message) {
         if (!expression) {
-            throw new MyResourceNotFoundException(message);
+            throw new ResourceNotFoundException(message);
         }
     }
 
@@ -185,7 +185,7 @@ public final class RestPreconditions {
      * @param expression
      *            has value true if found, otherwise false
      *
-     * @throws MyResourceNotFoundException
+     * @throws ResourceNotFoundException
      *             if expression is false, means value not found.
      */
     public static <T> T checkFound(final T resource) {
@@ -200,12 +200,12 @@ public final class RestPreconditions {
      * @param message
      *            the message of the exception if the check fails
      *
-     * @throws MyResourceNotFoundException
+     * @throws ResourceNotFoundException
      *             if expression is false, means value not found.
      */
     public static <T> T checkFound(final T resource, final String message) {
         if (resource == null) {
-            throw new MyResourceNotFoundException(message);
+            throw new ResourceNotFoundException(message);
         }
 
         return resource;
@@ -217,7 +217,7 @@ public final class RestPreconditions {
      * @param expression
      *            has value true if found, otherwise false
      *
-     * @throws MyForbiddenException
+     * @throws ForbiddenException
      *             if expression is false, means operation not allowed.
      */
     public static void checkAllowed(final boolean expression) {
@@ -232,12 +232,12 @@ public final class RestPreconditions {
      * @param message
      *            the message of the exception if the check fails
      *
-     * @throws MyForbiddenException
+     * @throws ForbiddenException
      *             if expression is false, means operation not allowed.
      */
     public static void checkAllowed(final boolean expression, final String message) {
         if (!expression) {
-            throw new MyForbiddenException(message);
+            throw new ForbiddenException(message);
         }
     }
 

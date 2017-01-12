@@ -1,14 +1,9 @@
 package org.baeldung.common.web;
 
-import java.util.List;
-
-import javax.persistence.EntityNotFoundException;
-import javax.validation.ConstraintViolationException;
-
 import org.baeldung.common.persistence.exception.MyEntityNotFoundException;
 import org.baeldung.common.web.exception.ApiError;
-import org.baeldung.common.web.exception.MyConflictException;
-import org.baeldung.common.web.exception.MyResourceNotFoundException;
+import org.baeldung.common.web.exception.ConflictException;
+import org.baeldung.common.web.exception.ResourceNotFoundException;
 import org.baeldung.common.web.exception.ValidationErrorDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +25,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import javax.persistence.EntityNotFoundException;
+import javax.validation.ConstraintViolationException;
+import java.util.List;
+
 @ControllerAdvice
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
     private Logger log = LoggerFactory.getLogger(getClass());
@@ -37,7 +36,6 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     public RestResponseEntityExceptionHandler() {
         super();
     }
-
     // API
 
     // 400
@@ -85,7 +83,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 
     // 404
 
-    @ExceptionHandler({ EntityNotFoundException.class, MyEntityNotFoundException.class, MyResourceNotFoundException.class })
+    @ExceptionHandler({ EntityNotFoundException.class, MyEntityNotFoundException.class, ResourceNotFoundException.class })
     protected ResponseEntity<Object> handleNotFound(final RuntimeException ex, final WebRequest request) {
         log.warn("Not Found: {}", ex.getMessage());
 
@@ -95,7 +93,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 
     // 409
 
-    @ExceptionHandler({ InvalidDataAccessApiUsageException.class, DataAccessException.class, MyConflictException.class })
+    @ExceptionHandler({ InvalidDataAccessApiUsageException.class, DataAccessException.class, ConflictException.class })
     protected ResponseEntity<Object> handleConflict(final RuntimeException ex, final WebRequest request) {
         log.warn("Conflict: {}", ex.getMessage());
 

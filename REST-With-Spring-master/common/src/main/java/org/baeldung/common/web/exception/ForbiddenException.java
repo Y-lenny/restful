@@ -7,17 +7,17 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * Thrown when user is forbidden to execute specified operation or access specified data.
  */
 @ResponseStatus(value = HttpStatus.FORBIDDEN)
-public class MyForbiddenException extends RuntimeException {
+public class ForbiddenException extends RuntimeException {
 
-    public MyForbiddenException() {
+    public ForbiddenException() {
         super();
     }
 
-    public MyForbiddenException(final String message) {
+    public ForbiddenException(final String message) {
         super(message);
     }
 
-    public MyForbiddenException(final Throwable cause) {
+    public ForbiddenException(final Throwable cause) {
         super(cause);
     }
 

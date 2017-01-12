@@ -1,22 +1,16 @@
 package org.baeldung.common.persistence.service;
 
-import java.util.List;
-
+import com.google.common.base.Preconditions;
+import com.google.common.collect.Lists;
 import org.apache.commons.lang3.tuple.ImmutableTriple;
 import org.apache.commons.lang3.tuple.Triple;
 import org.baeldung.common.persistence.ServicePreconditions;
-import org.baeldung.common.persistence.event.AfterEntitiesDeletedEvent;
-import org.baeldung.common.persistence.event.AfterEntityCreateEvent;
-import org.baeldung.common.persistence.event.AfterEntityDeleteEvent;
-import org.baeldung.common.persistence.event.AfterEntityUpdateEvent;
-import org.baeldung.common.persistence.event.BeforeEntityCreateEvent;
-import org.baeldung.common.persistence.event.BeforeEntityDeleteEvent;
-import org.baeldung.common.persistence.event.BeforeEntityUpdateEvent;
+import org.baeldung.common.persistence.event.*;
 import org.baeldung.common.persistence.model.IEntity;
 import org.baeldung.common.search.ClientOperation;
 import org.baeldung.common.util.SearchCommonUtil;
-import org.baeldung.common.web.exception.MyBadRequestException;
-import org.baeldung.common.web.exception.MyConflictException;
+import org.baeldung.common.web.exception.BadRequestException;
+import org.baeldung.common.web.exception.ConflictException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +25,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.google.common.base.Preconditions;
-import com.google.common.collect.Lists;
+import java.util.List;
 
 @Transactional
 public abstract class AbstractRawService<T extends IEntity> implements IRawService<T> {
@@ -63,7 +56,7 @@ public abstract class AbstractRawService<T extends IEntity> implements IRawServi
         } catch (final IllegalStateException illState) {
             logger.error("IllegalStateException on find operation");
             logger.warn("IllegalStateException on find operation", illState);
-            throw new MyBadRequestException(illState);
+            throw new BadRequestException(illState);
         }
 
         final List<T> results = searchAll(parsedQuery.toArray(new ImmutableTriple[parsedQuery.size()]));
@@ -79,7 +72,7 @@ public abstract class AbstractRawService<T extends IEntity> implements IRawServi
         } catch (final IllegalStateException illState) {
             logger.error("IllegalStateException on find operation");
             logger.warn("IllegalStateException on find operation", illState);
-            throw new MyConflictException(illState);
+            throw new ConflictException(illState);
         }
 
         final Page<T> resultPage = searchPaginated(page, size, parsedQuery.toArray(new ImmutableTriple[parsedQuery.size()]));
