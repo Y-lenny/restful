@@ -1,27 +1,35 @@
 package com.rest.restapi.controller;
 
+import com.rest.restapi.util.JsonUtil;
 import com.rest.restapi.util.query.QueryConstants;
 import com.rest.restapi.util.query.QueryOrderUtil;
 import com.rest.restapi.util.query.QuerySearchUtil;
-import com.rest.restapi.vo.OrderVo;
-import com.rest.restapi.vo.UserVo;
+import com.rest.restapi.util.url.UrlMappings;
+import com.rest.restapi.bean.vo.OrderVo;
+import com.rest.restapi.bean.vo.UserVo;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Created by lennylv on 2017-1-3.
- * <p>
- *     api.dev.hawk.com/v1/users
- *     api.test.hawk.com/v1/users
- *     api.pro.hawk.com/v1/users
- * <p>
- * v1版本API
+ * <br></br>
+ *
+ * api.dev.hawk.com/v1/users
+ * api.test.hawk.com/v1/users
+ * api.pro.hawk.com/v1/users
+ *
+ * @class   UserController
+ * @author  lennylv
+ * @date    2017-1-16 15:11
+ * @version 1.0
+ * @since   1.0
  */
 @RestController
-@RequestMapping(path = "/v1/users")
-public class UserController {
+@RequestMapping(UrlMappings.USERS)
+public class UserController extends AbstractController {
 
     /**
      * 创建用户
@@ -63,20 +71,20 @@ public class UserController {
      * @param id
      * @return
      */
-    @RequestMapping(path = "/{id}", method = RequestMethod.GET)
-    public Object queryUserById(@PathVariable(value = "id") int id) {
+    @RequestMapping(path = "/{id}", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public UserVo queryUserById(@PathVariable(value = "id") int id) {
         return new UserVo(id, "zhangsan", "zhangsan@tcl.com", "1234567890");
     }
 
     /**
      * 通过username过滤用户
-     *api.dev.clean.com/v1/users?username=zhangsan/ 直接映射RequestParam 对应参数;然后进行参数校验
+     * api.dev.clean.com/v1/users?username=zhangsan/ 直接映射RequestParam 对应参数;然后进行参数校验
      *
      * @param username
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET)
-    public Object queryUserByFilter(@RequestParam(value = "username") String username) {
+    @RequestMapping(method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public UserVo queryUserByFilter(@RequestParam(value = "username") String username) {
         if ("zhangsan".equalsIgnoreCase(username)) {
             return new UserVo(0, "zhangsan", "zhangsan@tcl.com", "1234567890");
         } else {
@@ -91,11 +99,12 @@ public class UserController {
      * @return
      */
 
-    @RequestMapping(params = {QueryConstants.SORT}, method = RequestMethod.GET)
-    public Object queryUserSort(@RequestParam(QueryConstants.SORT) String sorts) {
+    @RequestMapping(params = {QueryConstants.SORT}, method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public List<UserVo> queryUserSort(@RequestParam(QueryConstants.SORT) String sorts) {
 
         // 转换成排序列表
-        return QueryOrderUtil.parseSort(sorts);
+        QueryOrderUtil.parseSort(sorts);
+        return null;
     }
 
     /**
@@ -106,11 +115,12 @@ public class UserController {
      * @return
      */
 
-    @RequestMapping(params = {QueryConstants.Q_PARAM}, method = RequestMethod.GET)
-    public Object queryUserSearch(@RequestParam(QueryConstants.Q_PARAM) final String searches) {
+    @RequestMapping(params = {QueryConstants.Q_PARAM}, method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public List<UserVo> queryUserSearch(@RequestParam(QueryConstants.Q_PARAM) final String searches) {
 
         // 转换成搜索列表
-        return QuerySearchUtil.parseSearch(searches);
+        QuerySearchUtil.parseSearch(searches);
+        return null;
     }
 
     /**
@@ -122,8 +132,8 @@ public class UserController {
      * @return
      */
 
-    @RequestMapping(params = {QueryConstants.PAGE, QueryConstants.SIZE}, method = RequestMethod.GET)
-    public Object queryUserPaging(@RequestParam(QueryConstants.PAGE) final int page, @RequestParam(QueryConstants.SIZE) final int size) {
+    @RequestMapping(params = {QueryConstants.PAGE, QueryConstants.SIZE}, method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public List<UserVo> queryUserPaging(@RequestParam(QueryConstants.PAGE) final int page, @RequestParam(QueryConstants.SIZE) final int size) {
         return null;
     }
 
@@ -133,11 +143,12 @@ public class UserController {
      * @param id
      * @return
      */
-    @RequestMapping(path = "/{id}/orders", method = RequestMethod.GET)
-    public Object queryOrderByUserId(@PathVariable(value = "id") int id) {
+    @RequestMapping(path = "/{id}/orders", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public List<OrderVo> queryOrderByUserId(@PathVariable(value = "id") int id) {
+        System.out.println(JsonUtil.obj2json(getCommonParameter()));
         ArrayList orders = new ArrayList<OrderVo>();
         orders.add(new OrderVo(1, "order", id, null));
-        System.out.println(orders);
+        System.out.println(JsonUtil.obj2json(orders));
         return orders;
     }
 

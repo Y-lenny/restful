@@ -38,14 +38,13 @@ public final class QuerySearchUtil {
     /**
      * <br>验证参数：校验搜索参数是否有问题，应该维护哪些参数进行搜索以及搜索范围</br>
      *
-     * @Method
-     * @Param
-     * @Return
-     * @Exception
-     * @Author lennylv
-     * @Date 2017-1-5 14:18
-     * @Version 1.0
-     * @Since 1.0
+     * @param paramKeys
+     * @return boolean
+     * @throws
+     * @author lennylv
+     * @date 2017-1-16 15:17
+     * @version 1.0
+     * @since 1.0
      */
     public static boolean validateSearch(Set paramKeys) {
         if (paramKeys.retainAll(
@@ -61,14 +60,13 @@ public final class QuerySearchUtil {
     /**
      * <br>解析搜索</br>
      *
-     * @Method
-     * @Param
-     * @Return
-     * @Exception
-     * @Author lennylv
-     * @Date 2017-1-5 14:36
-     * @Version 1.0
-     * @Since 1.0
+     * @param searches
+     * @return java.util.List<com.rest.restapi.util.query.Search>
+     * @throws
+     * @author lennylv
+     * @date 2017-1-16 15:18
+     * @version 1.0
+     * @since 1.0
      */
     public static List<Search> parseSearch(final String searches) {
 
@@ -106,11 +104,15 @@ public final class QuerySearchUtil {
     }
 
     /**
-     * 映射搜索规则
+     * <br>搜索规则</br>
      *
-     * @param negated
-     * @param value
-     * @return
+     * @param [negated, value]
+     * @return com.rest.restapi.util.query.SearchMiddle
+     * @throws
+     * @author lennylv
+     * @date 2017-1-16 15:18
+     * @version 1.0
+     * @since 1.0
      */
     private static SearchMiddle determineOperation(final boolean negated, final String value) {
         SearchMiddle op = null;

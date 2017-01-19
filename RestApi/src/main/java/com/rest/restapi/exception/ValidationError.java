@@ -14,27 +14,39 @@ import java.util.List;
  */
 public class ValidationError {
 
+    private final int code;
+    private final String message;
     private final List<FieldError> fieldErrors = new ArrayList<FieldError>();
 
-    public ValidationError() {
+    public ValidationError(int code, String message) {
         super();
+        this.code = code;
+        this.message = message;
     }
 
-    public final void addFieldError(final String path, final String message) {
-        final FieldError error = new FieldError(path, message);
+    public final void addFieldError(final int code, final String field, final String message) {
+        final FieldError error = new FieldError(code, field, message);
         fieldErrors.add(error);
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public String getMessage() {
+        return message;
     }
 
     public final List<FieldError> getFieldErrors() {
         return fieldErrors;
     }
 
-
     @Override
-    public final String toString() {
-        final StringBuilder builder = new StringBuilder();
-        builder.append("ValidationError [fieldErrors=").append(fieldErrors).append("]");
-        return builder.toString();
+    public String toString() {
+        return "ValidationError{" +
+                "code=" + code +
+                ", message='" + message + '\'' +
+                ", fieldErrors=" + fieldErrors +
+                '}';
     }
-
 }

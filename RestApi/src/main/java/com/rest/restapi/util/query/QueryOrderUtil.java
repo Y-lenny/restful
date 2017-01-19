@@ -14,6 +14,7 @@ import java.util.List;
  * 使用关键字 sort
  * 例如：按照用户名升序、email倒序 ：order=username,-email
  * <p>
+ *
  * @Class QueryOrderUtil
  * @Author lennylv
  * @Date 2017-1-5 11:32
@@ -35,14 +36,13 @@ public final class QueryOrderUtil {
     /**
      * <br>TODO 校验参数：校验排序参数是否有问题，应该维护哪些参数进行排序以及排序规则</br>
      *
-     * @Method
-     * @Param
-     * @Return
-     * @Exception
-     * @Author lennylv
-     * @Date 2017-1-5 14:08
-     * @Version 1.0
-     * @Since 1.0
+     * @param sorts
+     * @return boolean
+     * @throws
+     * @author lennylv
+     * @date 2017-1-16 15:16
+     * @version 1.0
+     * @since 1.0
      */
     public static boolean validateSort(List<Sort> sorts) {
         return true;
@@ -51,14 +51,13 @@ public final class QueryOrderUtil {
     /**
      * <br>解析排序</br>
      *
-     * @Method
-     * @Param
-     * @Return
-     * @Exception
-     * @Author lennylv
-     * @Date 2017-1-5 14:36
-     * @Version 1.0
-     * @Since 1.0
+     * @param sorts
+     * @return java.util.List<com.rest.restapi.util.query.Sort>
+     * @throws
+     * @author lennylv
+     * @date 2017-1-16 15:16
+     * @version 1.0
+     * @since 1.0
      */
     public static List<Sort> parseSort(String sorts) {
 

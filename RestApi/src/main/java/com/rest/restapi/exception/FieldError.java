@@ -11,12 +11,18 @@ package com.rest.restapi.exception;
  */
 public class FieldError {
 
+    private final int code;
     private final String field;
     private final String message;
 
-    public FieldError(final String field, final String message) {
+    public FieldError(final int code, final String field, final String message) {
+        this.code = code;
         this.field = field;
         this.message = message;
+    }
+
+    public int getCode() {
+        return code;
     }
 
     public String getField() {
@@ -27,4 +33,12 @@ public class FieldError {
         return message;
     }
 
+    @Override
+    public String toString() {
+        return "FieldError{" +
+                "code=" + code +
+                ", field='" + field + '\'' +
+                ", message='" + message + '\'' +
+                '}';
+    }
 }
