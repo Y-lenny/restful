@@ -5,11 +5,11 @@ package com.rest.restapi.util.url;
  *
  * @author lennylv
  * @version 1.0
- * @class UrlMappings
+ * @class UrlMapping
  * @date 2017-1-11 13:09
  * @since 1.0
  */
-public final class UrlMappings {
+public final class UrlMapping {
 
     /**
      * 软件版本资源路径

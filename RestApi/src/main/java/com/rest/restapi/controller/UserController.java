@@ -4,7 +4,7 @@ import com.rest.restapi.util.JsonUtil;
 import com.rest.restapi.util.query.QueryConstants;
 import com.rest.restapi.util.query.QueryOrderUtil;
 import com.rest.restapi.util.query.QuerySearchUtil;
-import com.rest.restapi.util.url.UrlMappings;
+import com.rest.restapi.util.url.UrlMapping;
 import com.rest.restapi.bean.vo.OrderVo;
 import com.rest.restapi.bean.vo.UserVo;
 import org.springframework.http.HttpStatus;
@@ -28,7 +28,7 @@ import java.util.List;
  * @since   1.0
  */
 @RestController
-@RequestMapping(UrlMappings.USERS)
+@RequestMapping(UrlMapping.USERS)
 public class UserController extends AbstractController {
 
     /**
