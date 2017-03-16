@@ -1,4 +1,4 @@
-package com.rest.dto;
+package com.rest.bean.dto;
 
 /**
  * Created by lennylv on 2017-1-20.

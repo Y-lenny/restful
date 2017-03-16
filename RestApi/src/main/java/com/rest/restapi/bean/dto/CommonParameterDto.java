@@ -3,7 +3,7 @@ package com.rest.restapi.bean.dto;
 import java.io.Serializable;
 
 /**
- * <br></br>
+ * <br>公共参数的业务对象</br>
  *
  * @author lennylv
  * @version 1.0

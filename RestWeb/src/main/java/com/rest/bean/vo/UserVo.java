@@ -1,4 +1,4 @@
-package com.rest.vo;
+package com.rest.bean.vo;
 
 /**
  * Created by lennylv on 2017-1-20.

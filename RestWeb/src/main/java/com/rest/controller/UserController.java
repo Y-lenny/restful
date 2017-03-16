@@ -2,7 +2,7 @@ package com.rest.controller;
 
 import com.google.common.collect.Lists;
 import com.rest.util.url.UrlMapping;
-import com.rest.vo.UserVo;
+import com.rest.bean.vo.UserVo;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -10,7 +10,7 @@
     <mvc:annotation-driven enable-matrix-variables="true"/>
 
     <!--响应消息适配器-->
-<!--    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
         <property name="messageConverters">
             <list>
                 <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
@@ -24,7 +24,7 @@
                 </bean>
             </list>
         </property>
-    </bean>-->
+    </bean>
 
     <!-- 注意：FreeMarker与SpringMVC集成时，其配置一定要放在SpringMVC的配置之前 -->
     <!-- 否则：在访问"/v1/users/{id}"时服务器就会报告[HTTP Status 404 - /WEB-INF/views/jsp/users.jsp] -->
