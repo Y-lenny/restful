@@ -5,6 +5,11 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
                         http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
+    <!-- 配置Spring上下文监听器 -->
+    <!--    <listener>
+            <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+        </listener>-->
+
     <!--针对于request请求分发到响应的controller和针对于response响应进行视图化返回-->
     <servlet>
         <servlet-name>dispatcherServlet</servlet-name>

@@ -32,7 +32,7 @@ public class UserController {
         return "user_info";
     }
 
-    @RequestMapping(method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public List<UserVo> getUserByName(@RequestParam(value = "username") String username, Model model) {
 
