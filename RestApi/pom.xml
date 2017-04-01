@@ -5,7 +5,7 @@
 
     <groupId>com.rest</groupId>
     <artifactId>restapi</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${project.release.version}</version>
     <packaging>jar</packaging>
 
     <name>RestApi</name>
@@ -22,6 +22,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.7</java.version>
+        <project.release.version>0.1-SNAPSHOT</project.release.version>
     </properties>
 
     <dependencies>
@@ -54,8 +55,8 @@
 
         <dependency>
             <groupId>org.aspectj</groupId>
-            <artifactId>aspectj</artifactId>
-            <version>1.8.3</version>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.8.9</version>
         </dependency>
 
         <dependency>
@@ -84,5 +85,93 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>public</id>
+            <name>local private nexus</name>
+            <url>http://192.168.42.128:8081/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>Public-snapshots</id>
+            <name>local private nexus</name>
+            <url>http://192.168.42.128:8081/nexus/content/groups/Public-snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>public</id>
+            <name>local private nexus</name>
+            <url>http://192.168.42.128:8081/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>Public-snapshots</id>
+            <name>local private nexus</name>
+            <url>http://192.168.42.128:8081/nexus/content/groups/Public-snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus-dev</id>
+            <url>http://192.168.42.128:8081/nexus/content/repositories/nexus-dev</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-dev-snap</id>
+            <url>http://192.168.42.128:8081/nexus/content/repositories/nexus-dev-snap</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <profiles>
+        <profile>
+            <id>product</id>
+            <properties>
+                <project.release.version>0.1</project.release.version>
+                <final.name>rest-api-product</final.name>
+                <package.env>src/main/env/product</package.env>
+            </properties>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <final.name>rest-api-test</final.name>
+                <package.env>src/main/env/test</package.env>
+            </properties>
+        </profile>
+        <profile>
+            <id>develop</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <final.name>rest-api-develop</final.name>
+                <package.env>src/main/env/develop</package.env>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>
