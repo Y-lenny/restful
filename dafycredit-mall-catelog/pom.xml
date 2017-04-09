@@ -30,10 +30,20 @@
         <thymeleaf-layout-dialect.version>2.0.1</thymeleaf-layout-dialect.version>
     </properties>
 
+    <!--dependencies jar begin-->
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-java8time</artifactId>
+            <version>${thymeleaf-extras-java8time.version}</version>
         </dependency>
 
         <dependency>
@@ -42,40 +52,25 @@
             <version>${mybatis.spring.boot.starter}</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.thymeleaf.extras</groupId>
-            <artifactId>thymeleaf-extras-java8time</artifactId>
-            <version>${thymeleaf-extras-java8time.version}</version>
-        </dependency>
-
-        <!-- 数据库连接池 -->
-        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>${druid}</version>
         </dependency>
-
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.github.penggle</groupId>
-            <artifactId>kaptcha</artifactId>
-            <version>${kaptcha}</version>
-        </dependency>
     </dependencies>
+    <!--dependencies jar end-->
 
+    <!--package jar env:dev/test/prod begin-->
     <profiles>
         <profile>
             <id>dev</id>
@@ -104,7 +99,9 @@
             </properties>
         </profile>
     </profiles>
+    <!--package jar env:dev/test/prod end-->
 
+    <!--build code plugin begin-->
     <build>
         <finalName>${final.name}</finalName>
         <plugins>
@@ -119,6 +116,6 @@
             </resource>
         </resources>
     </build>
-
+    <!--build code plugin end-->
 
 </project>
