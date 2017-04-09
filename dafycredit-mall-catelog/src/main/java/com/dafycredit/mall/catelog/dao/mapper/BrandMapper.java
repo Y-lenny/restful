@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface BrandMapper {
 
     public BrandDto findBrandById(@Param("brandId") Integer brandId);

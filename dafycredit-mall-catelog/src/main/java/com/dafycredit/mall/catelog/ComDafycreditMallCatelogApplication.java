@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan(value = "com.dafycredit.mall.catelog.dao.mapper")
+@MapperScan(basePackages= "com.dafycredit.mall.catelog.dao.mapper")
 public class ComDafycreditMallCatelogApplication {
 
     public static void main(String[] args) {
