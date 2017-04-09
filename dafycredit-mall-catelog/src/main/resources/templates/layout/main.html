@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml">
+<!--<![endif]-->
+
+<!-- begin head -->
+<head>
+    <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">即有分期 | 运营中心</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta name="MobileOptimized" content="320"/>
+    <!-- begin global mandatory styles -->
+    <link href="/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+    <!-- end global mandatory styles -->
+    <link rel="stylesheet" href="/assets/plugins/select2/select2_metro.css" type="text/css"/>
+    <link rel="stylesheet" href="/assets/plugins/data-tables/DT_bootstrap.css" type="text/css"/>
+    <!-- begin theme styles -->
+    <link href="/assets/css/style-metronic.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/css/plugins.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/css/themes/default.css" rel="stylesheet" theme-dir="/assets/css/themes/" type="text/css"
+          id="style_color"/>
+    <link href="/assets/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.css" rel="stylesheet" type="text/css"/>
+    <!-- end theme styles -->
+    <script src="/assets/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="/assets/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+    <script src="/assets/plugins/jquery-validation/lib/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="/assets/plugins/jquery-validation/lib/additional-methods.min.js" type="text/javascript"></script>
+    <script src="/assets/plugins/jquery-validation/localization/messages_zh.js" type="text/javascript"></script>
+
+    <style>
+        .bottom-error-block {
+            color: red;
+            padding-left: 12%;
+            clear: both;
+        }
+    </style>
+</head>
+<!-- end head -->
+
+<!-- begin body -->
+<body class="page-header-fixed">
+<div th:replace="/layout/header :: header">
+</div>
+<div class="clearfix">
+</div>
+<!-- begin container -->
+<div class="page-container">
+    <div th:replace="/layout/left :: left">
+    </div>
+    <!-- begin content -->
+    <div layout:fragment="content">
+        <p>Content goes here...</p>
+    </div>
+    <!-- end content -->
+</div>
+<!-- end container -->
+<div th:replace="/layout/footer :: footer">
+</div>
+<!-- begin javascripts(load javascripts at bottom, this will reduce page load time) -->
+<!-- begin core plugins -->
+<!--[if lt IE 9]>
+<script src="/assets/plugins/respond.min.js"></script>
+<script src="/assets/plugins/excanvas.min.js"></script>
+<![endif]-->
+<script src="/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/assets/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js"
+        type="text/javascript"></script>
+<script src="/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="/assets/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<!-- end core plugins -->
+<!-- begin page level plugins -->
+<script type="text/javascript" src="/assets/plugins/select2/select2.min.js"></script>
+<script type="text/javascript" src="/assets/plugins/data-tables/jquery.dataTables.js"></script>
+<script type="text/javascript" src="/assets/plugins/data-tables/DT_bootstrap.js"></script>
+<!-- end page level plugins -->
+<!-- begin page level scripts -->
+<script src="/assets/scripts/app.js" type="text/javascript"></script>
+<!-- end page level scripts -->
+<script>
+    jQuery(document).ready(function () {
+        App.init(); // initlayout and core plugins
+    });
+</script>
+<!-- end javascripts -->
+</body>
+<!-- end body -->
+
+</html>

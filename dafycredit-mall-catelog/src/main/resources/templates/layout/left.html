@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<!-- begin sidebar -->
+
+<body>
+<div th:fragment="left" class="page-sidebar-wrapper">
+    <div class="page-sidebar navbar-collapse collapse">
+        <!-- begin sidebar menu -->
+        <ul class="page-sidebar-menu">
+            <li th:class="${cur=='sel-index'} ? 'start active'">
+                <a href="#"><i class="fa fa-home"></i><span class="title">首页</span><span class="selected"></span></a>
+            </li>
+            <li th:class="${cur=='sel-pro'} ? 'active'" style="display:none">
+                <a href="javascript:;">
+                    <i class="icon-basket"></i>
+                    <span class="title">商品管理</span>
+                    <span class="arrow open"/>
+                </a>
+                <ul class="sub-menu">
+                    <li th:class="${cur_sub=='sel-brand'} ? 'active'">
+                        <a href="/brands.shtml">
+                            品牌管理
+                        </a>
+                    </li>
+                    <li th:class="${cur_sub=='sel-category'} ? 'active'">
+                        <a href="#">
+                            类目管理
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- end sidebar menu -->
+    </div>
+
+    <script>
+        $(function () {
+            $(".sub-menu").each(function () {
+                var $this = $(this);
+                var liObjs = $this.find("li");
+                if (liObjs.length > 0) {
+                    $this.closest("li").show();
+                }
+            })
+        });
+    </script>
+
+</div>
+<!-- end sidebar -->
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<!-- begin header -->
+<body>
+<div th:fragment="header" class="header navbar navbar-inverse navbar-fixed-top">
+
+    <!-- begin top navigation bar -->
+    <div class="header-inner">
+        <!-- begin logo -->
+        <a class="navbar-brand" href="http://www.giveu.cn/Images/Home/logo.png"
+           style="padding:10px; font-weight:bold; font-size:18px">
+            即有商城运营后台
+        </a>
+        <!-- end logo -->
+        <!-- begin responsive menu toggler -->
+        <a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            测试
+        </a>
+        <!-- end responsive menu toggler -->
+
+        <!-- begin top navigation menu -->
+        <ul class="nav navbar-nav pull-right">
+            <!-- begin user login dropdown -->
+            <li class="dropdown user">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                   data-close-others="true">
+                    <img th:if="${admin_login_avatar != null}" src="/assets/img/avatar.png"
+                         th:src="@{${admin_login_avatar}}" width="29" height="29"/>
+                    <img th:unless="${admin_login_avatar != null}" src="/assets/img/avatar.png" width="29" height="29"/>
+				<span class="username" th:text="${admin_login_key}">
+				</span>
+                    <i class="fa fa-angle-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#"><i class="fa fa-key"></i> 安全退出</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <div class="theme-panel hidden-xs hidden-sm">
+                    <div class="toggler js-sidebar-toggler" title="缩放菜单" style="display: block;">
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <!-- end top navigation menu -->
+    </div>
+    <!-- end top navigation bar -->
+
+</div>
+</body>
+<!-- end header -->
+</html>
